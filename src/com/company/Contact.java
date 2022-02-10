@@ -5,12 +5,12 @@ public class Contact {
   private String lastName;
   private String address;
   private String email;
-  private int contactNumber;
+  private long contactNumber;
 
   // Constructor
   public Contact(){}
 
-  public Contact(String firstName, String lastName, String address, String email, int contactNumber) {
+  public Contact(String firstName, String lastName, String address, String email, long contactNumber) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.address = address;
@@ -35,7 +35,7 @@ public class Contact {
     this.email = email;
   }
 
-  public void setContactNumber(int contactNumber) {
+  public void setContactNumber(long contactNumber) {
     this.contactNumber = contactNumber;
   }
 
@@ -56,7 +56,7 @@ public class Contact {
     return email;
   }
 
-  public int getContactNumber() {
+  public long getContactNumber() {
     return contactNumber;
   }
 }

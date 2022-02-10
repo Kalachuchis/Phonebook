@@ -20,13 +20,16 @@ public class Main {
         boolean running = true;
         try {
             while (running) {
+                // Main Page
                 if (option == 0) {
                     System.out.println("Phonebook Capstone Project Using Object Oriented Programming");
                     System.out.println(" [1]Display Contacts - [2]Add Contact - [3]Update Contact - [4]Remove Contact - [5]Search Contact - [6]Close app");
                     System.out.println("|===============================================================================================================|");
                     option = Integer.parseInt(appScanner.nextLine().trim());
+                }
 
-                } else if (option == 1) {
+                //Display Contact
+                else if (option == 1) {
                     ArrayList<Contact> phoneBook = newPhoneBook.getPhoneBook();
                     if (phoneBook.size() != 0) {
                         System.out.println("This phonebook has " + phoneBook.size() + " contact/s.");
@@ -44,7 +47,9 @@ public class Main {
                         System.out.println("\n\n\n\n\n\n\n\nPhonebook is empty. Add Contacts");
                     }
                     option = 0;
-                } else if (option == 2) {
+                }
+                // Add Contact
+                else if (option == 2) {
                     Contact newContact = new Contact();
 
                     System.out.println("Please enter details:");
@@ -58,7 +63,7 @@ public class Main {
                     String email = appScanner.nextLine().trim();
                     System.out.println("Contact Number:");
 //                    System.out.print("+63 ");
-                    int contactNumber = Integer.parseInt(appScanner.nextLine());
+                    long contactNumber = Long.parseLong(appScanner.nextLine());
 
                     newContact.setFirstName(firstName);
                     newContact.setLastName(lastName);
@@ -72,9 +77,23 @@ public class Main {
 
                     option = 0;
 
-                } else if (option == 3) {
-                    //TODO: UPDATE CONTACT
-                } else if (option == 4) {
+                }
+                // Update Contact
+                else if (option == 3) {
+                    //goes back to main page if phonebook is empty
+                    if (newPhoneBook.getPhoneBook().size() == 0){
+                        System.out.println("Phonebook is empty");
+                        option = 0;
+                        continue;
+                    }
+                    System.out.println("Search Contact:");
+                    String filter = appScanner.nextLine();
+                    newPhoneBook.updateContact(filter, appScanner);
+                    option = 0;
+
+                }
+                // Remove Contact
+                else if (option == 4) {
                     //TODO: REMOVE CONTACT
                     ArrayList<Contact> phoneBook = newPhoneBook.getPhoneBook();
                     if (phoneBook.size() == 0){
@@ -102,9 +121,23 @@ public class Main {
                         }
                     }
                     option = 0;
-                } else if (option == 5) {
+                }
+                //Search Contact
+                else if (option == 5) {
                     //TODO: SEARCH CONTACT
-                } else if (option == 6) {
+                    if (newPhoneBook.getPhoneBook().size() == 0){
+                        System.out.println("Phonebook is empty");
+                        option = 0;
+                        continue;
+                    }
+                    System.out.println("Search Contact:");
+                    String filter = appScanner.nextLine();
+                    newPhoneBook.searchContact(filter);
+                    option = 0;
+
+                }
+                // Exit app
+                else if (option == 6) {
                     running = false;
                 }
             }
